@@ -1,0 +1,15 @@
+<div class="container home">
+    <p class="h3">{{titleInscription}}</p>
+    <p class="h6" [innerHTML]="descriptionInscription"></p>
+    <p>
+        <input type="text" name="input-search" class="form-control" />
+    </p>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" [value]="textBtnNext" class="btn btn-danger w-100" (click)="goToRegister()" />
+        </div>
+        <div class="col-6">
+            <input type="button" [value]="textBtnPrevious" class="btn btn-dark w-100" (click)="goBack()" />
+        </div>
+    </div>
+</div>

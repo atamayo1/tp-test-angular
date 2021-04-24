@@ -1,0 +1,33 @@
+{
+    "errors": [],
+    "inscriptions": 
+        [
+            {
+                "idType": "natural",
+                "idNumber": "1144069111",
+                "companyName": "Anthony Tamayo Ortega",
+                "firstName": "Anthony",
+                "SecondName": "",
+                "firstLastName": "Tamayo",
+                "secondLastName": "Ortega",
+                "email": "anthony1_144@hotmail.com",
+                "address": "Cra 92 #48 - 163",
+                "municipalityOfTheAddress": "Cali",
+                "cellPhone": "+573216376699"
+            },
+            {
+                "idType": "juridica",
+                "idNumber": "1144069111",
+                "companyName": "AnthonyJobs",
+                "firstName": "Anthony",
+                "SecondName": "",
+                "firstLastName": "Tamayo",
+                "secondLastName": "Ortega",
+                "email": "anthony1_144@hotmail.com",
+                "address": "Cra 92 #48 - 163",
+                "municipalityOfTheAddress": "Cali",
+                "cellPhone": "+573216376699"
+            }
+        ],
+    "hasErrors": false
+  }

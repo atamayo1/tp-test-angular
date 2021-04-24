@@ -1,4 +1,8 @@
 :root {
-      /* Fuentes */
-  --global-font-family: Arial, sans-serif;
+  /* Colores */
+  --color-white-1: #ffffff;
+  /* Fuentes */
+  --global-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
