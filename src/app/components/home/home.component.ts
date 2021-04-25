@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Inscription } from 'src/app/interfaces/inscription.interface';
 import { InscriptionService } from 'src/app/services/inscription.service';
@@ -11,12 +11,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  public filterText: string;
   public titleInscription: string;
   public descriptionInscription: string;
   public textBtnNext: string;
   public textBtnPrevious: string;
   public closeResult: string;
-  public companies: Inscription;
+  public company: Inscription;
 
   constructor(
     private router: Router,
@@ -31,7 +32,40 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  goToRegister(content) {
+  consultingAndGoToUpdateRegister(content, nit: string) {
+    console.log('filterText', nit);
+    console.log('content', content);
+
+    if (nit) {
+      this.inscriptionService
+        .httpWithOutToken(environment.domain + 'body/', 'get', { id: nit })
+        .subscribe(
+          (res) => {
+            console.log('get company', res);
+            if (res.length > 0) {
+              this.company = res;
+
+              const navigationExtras: NavigationExtras = {
+                queryParams: {
+                  data: this.company,
+                },
+              };
+              this.router.navigate(['register'], navigationExtras);
+            } else {
+              this.activeModal(content);
+            }
+          },
+          (err) => {
+            console.error('error', err);
+            this.activeModal(content);
+          }
+        );
+    } else {
+      this.activeModal(content);
+    }
+  }
+
+  activeModal(content) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
@@ -40,21 +74,6 @@ export class HomeComponent implements OnInit {
         },
         (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-    this.router.navigate(['register']);
-  }
-
-  getCompanyById(id: string) {
-    this.inscriptionService
-      .httpWithOutToken(environment.domain + '/body/', 'get', { id: id })
-      .subscribe(
-        (res) => {
-          console.log('get company', res);
-          if (res) this.companies = res['results'];
-        },
-        (err) => {
-          console.error('error', err);
         }
       );
   }

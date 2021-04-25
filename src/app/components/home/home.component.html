@@ -1,13 +1,16 @@
 <div class="container consulting-home">
   <p class="h3">{{ titleInscription }}</p>
   <p class="h6" [innerHTML]="descriptionInscription"></p>
-  <form action="" method="post">
+  <form>
     <p>
       <input
-        type="text"
+        type="number"
+        max="10"
+        [(ngModel)]="filterText"
         name="input-search"
         class="form-control form-search"
         placeholder="NIT"
+        required
       />
     </p>
     <div class="row">
@@ -16,7 +19,7 @@
           type="button"
           [value]="textBtnNext"
           class="btn btn-danger w-100"
-          (click)="goToRegister(mymodal)"
+          (click)="consultingAndGoToUpdateRegister(mymodal, filterText)"
         />
       </div>
       <div class="col-6">
@@ -43,5 +46,5 @@
       <span aria-hidden="true">Cerrar</span>
     </button>
   </div>
-  <div class="modal-body">(tramite) <br> <span>La identificación de la empresa no esta registrada</span></div>
+  <div class="modal-body">(tramite{{filterText}}) <br> <span>La identificación de la empresa no esta registrada</span></div>
 </ng-template>
