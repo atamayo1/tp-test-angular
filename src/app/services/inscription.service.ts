@@ -1,57 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
-import { Inscription } from '../models/inscription';
-import {
-  AppHttpResponse,
-  TrackHttpError,
-} from '../interfaces/response.interface';
-import { map, catchError } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import _ from 'lodash';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InscriptionService {
-  decrypRSA: any;
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
-  getCompanies(): Observable<Inscription[]> {
-    var url = `/assets/mocks/companies.json`;
-    return this.http.get<AppHttpResponse<Inscription[]>>(url).pipe(
-      map((response: AppHttpResponse<Inscription[]>) => {
-        if (response.hasErrors) {
-          return [];
+  httpWithOutToken(
+    url: string,
+    type: 'get' | 'post' | 'patch' | 'delete',
+    parameters?: { [x: string]: string },
+    data?: any
+  ): Observable<any> {
+    // Initialize Params Object
+    let params = new HttpParams();
+
+    // Begin assigning parameters
+    if (!_.isUndefined(parameters)) {
+      for (const key in parameters) {
+        if (typeof parameters[key] === 'object') {
+          for (let i = 0; i < parameters[key].length; i++) {
+            params = params.append(key, parameters[key][i]);
+          }
         } else {
-          return response.body;
+          params = params.append(key, parameters[key]);
         }
-      }),
-      catchError(() => {
-        return of([]);
-      })
-    );
-  }
-  
-  getCompanyById(id: number): Observable<Inscription> {
-    var url = `/assets/mocks/companies.json`;
-    return this.http.get<Inscription>(url + "/" + id);
-  }
-
-  saveCompany(
-    data: Inscription
-  ): Observable<AppHttpResponse<any> | TrackHttpError> {
-    var url = `/assets/mocks/companies.json`;
-    return this.http
-      .post<null>(url, data)
-      .pipe(catchError((error) => this.handleHttpError(error)));
-  }
-
-  private handleHttpError(
-    error: HttpErrorResponse
-  ): Observable<TrackHttpError> {
-    console.log('ERROR => ', error);
-    let dataError = new TrackHttpError();
-    dataError.inscriptionErrorMessage =
-      'Se presentó un error.. Intente nuevamente.';
-    return throwError(dataError);
+      }
+    }
+    switch (type) {
+      case 'get':
+        return this.http.get(url, { params: params });
+      case 'post':
+        return this.http.post(url, data, { params: params });
+      case 'patch':
+        return this.http.patch(url, data, { params: params });
+      case 'delete':
+        return this.http.delete(url, { params: params });
+    }
   }
 }

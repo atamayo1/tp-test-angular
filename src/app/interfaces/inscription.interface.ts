@@ -1,9 +1,9 @@
-export class Inscription {
+export interface Inscription {
     idType: string;
-    idNumber: number;
+    id: number;
     companyName:   string;
     firstName: string;
-    SecondName: string;
+    secondName: string;
     firstLastName: string;
     secondLastName: string;
     email: string;

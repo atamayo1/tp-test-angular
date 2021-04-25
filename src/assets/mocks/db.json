@@ -4,30 +4,29 @@
         [
             {
                 "idType": "natural",
-                "idNumber": "1144069111",
+                "id": "811033098",
                 "companyName": "Anthony Tamayo Ortega",
                 "firstName": "Anthony",
-                "SecondName": "",
+                "secondName": "",
                 "firstLastName": "Tamayo",
                 "secondLastName": "Ortega",
-                "email": "anthony1_144@hotmail.com",
+                "email": "anthonytamayoortega@gmail.com",
                 "address": "Cra 92 #48 - 163",
                 "municipalityOfTheAddress": "Cali",
                 "cellPhone": "+573216376699"
             },
             {
                 "idType": "juridica",
-                "idNumber": "1144069111",
+                "id": "900674336",
                 "companyName": "AnthonyJobs",
                 "firstName": "Anthony",
-                "SecondName": "",
+                "secondName": "",
                 "firstLastName": "Tamayo",
                 "secondLastName": "Ortega",
-                "email": "anthony1_144@hotmail.com",
+                "email": "anthonyjobs@yopmail.com",
                 "address": "Cra 92 #48 - 163",
                 "municipalityOfTheAddress": "Cali",
                 "cellPhone": "+573216376699"
             }
-        ],
-    "hasErrors": false
+        ]
   }
