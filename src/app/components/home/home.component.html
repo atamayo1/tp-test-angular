@@ -1,15 +1,47 @@
-<div class="container home">
-    <p class="h3">{{titleInscription}}</p>
-    <p class="h6" [innerHTML]="descriptionInscription"></p>
+<div class="container consulting-home">
+  <p class="h3">{{ titleInscription }}</p>
+  <p class="h6" [innerHTML]="descriptionInscription"></p>
+  <form action="" method="post">
     <p>
-        <input type="text" name="input-search" class="form-control" />
+      <input
+        type="text"
+        name="input-search"
+        class="form-control form-search"
+        placeholder="NIT"
+      />
     </p>
     <div class="row">
-        <div class="col-6">
-            <input type="button" [value]="textBtnNext" class="btn btn-danger w-100" (click)="goToRegister()" />
-        </div>
-        <div class="col-6">
-            <input type="button" [value]="textBtnPrevious" class="btn btn-dark w-100" (click)="goBack()" />
-        </div>
+      <div class="col-6">
+        <input
+          type="button"
+          [value]="textBtnNext"
+          class="btn btn-danger w-100"
+          (click)="goToRegister(mymodal)"
+        />
+      </div>
+      <div class="col-6">
+        <input
+          type="button"
+          [value]="textBtnPrevious"
+          class="btn btn-dark w-100"
+          (click)="goBack()"
+        />
+      </div>
     </div>
+  </form>
 </div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Información</h4>
+    <button
+      type="button"
+      class="btn btn-dark"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">Cerrar</span>
+    </button>
+  </div>
+  <div class="modal-body">(tramite) <br> <span>La identificación de la empresa no esta registrada</span></div>
+</ng-template>

@@ -10,8 +10,4 @@ export class Inscription {
     address: string;
     municipalityOfTheAddress: string;
     cellPhone: string;
-
-  public Inscription() {
-      
-  }
 }
