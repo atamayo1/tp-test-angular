@@ -1,1 +1,66 @@
-<p>register works!</p>
+<div class="container register-company">
+    <p class="h3">{{titleRegister}}</p>
+    <div class="alert alert-info" [innerHTML]="descriptionRegister"></div>
+    <form action="" method="post">
+        <p>
+            <label for="idtype">Naturaleza:*</label>
+            <select name="idtype" class="form-select form-select-lg form-control">
+                <option selected value="0">Persona jurídica</option>
+                <option value="1">Persona natural</option>
+            </select>
+        </p>
+        <p>
+            <label for="company-name">Nombre/Razón social:*</label>
+            <input type="text" name="company-name" class="form-control" placeholder="CONSULTORES WEB S.A.S" />
+        </p>
+        <div class="row mb-4">
+            <div class="col-12 col-md-4">
+                <label for="via">Via</label>
+                <select name="via" class="form-select form-select-lg form-control">
+                    <option selected value="0">Carrera</option>
+                    <option value="1">Calle</option>
+                </select>
+            </div>
+            <div class="col-3 col-md-1">
+                <label for="number-one">Nro*</label>
+                <input type="number" name="number-one" class="form-control" placeholder="43" />
+            </div>
+            <div class="col-3 col-md-1">
+                <label for="letter-one">Letra</label>
+                <input type="text" name="letter-one" class="form-control" placeholder="A" />
+            </div>
+            <div class="col-3 col-md-1">
+                <label for="number-two">Nro*</label>
+                <input type="number" name="number-two" class="form-control" placeholder="1" />
+            </div>
+            <div class="col-3 col-md-1">
+                <label for="letter-two">Letra</label>
+                <input type="text" name="letter-two" class="form-control" />
+            </div>
+            <div class="col-12 col-md-4">
+                <label for="complement-number">Nro y complementos*</label>
+                <input type="number" name="complement-number" class="form-control" placeholder="85 INT. 613" />
+            </div>
+        </div>
+        <p>
+            <label for="address">Dirección:*</label>
+            <input type="text" name="address" class="form-control" placeholder="CARRERA 43 A 1 85 INT. 613" /> 
+        </p>
+        <p>
+            <label for="municipality-of-the-address">Municipio:*</label>
+            <input type="text" name="municipality-of-the-address" class="form-control" placeholder="COLOMBIA - ANTIOQUÍA - MEDELLÍN" /> 
+        </p>
+        <p>
+            <label for="phone">Teléfono 1:*</label>
+            <input type="text" name="phone" class="form-control" /> 
+        </p>
+        <div class="row mb-4">
+            <div class="col-6">
+                <input type="button" [value]="textBtnNext" class="btn btn-danger w-100" (click)="saveCompany()" />
+            </div>
+            <div class="col-6">
+                <input type="button" [value]="textBtnPrevious" class="btn btn-dark w-100" (click)="goBack()" />
+            </div>
+        </div>
+    </form>
+</div>
