@@ -3,6 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  NgForm,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,6 +23,7 @@ export class RegisterComponent implements OnInit {
   public company: Inscription;
   public inscriptionForm: FormGroup;
   public closeResult: string;
+  private ngform: NgForm;
 
   constructor(
     private router: Router,
@@ -40,7 +42,7 @@ export class RegisterComponent implements OnInit {
   validForm() {
     this.inscriptionForm = new FormGroup({
       idType: new FormControl(null, [Validators.required]),
-      id: new FormControl(null, [Validators.required]),
+      id: new FormControl({value: null, disabled: true}, [Validators.required]),
       companyName: new FormControl('', [Validators.required]),
       firstName: new FormControl('', [Validators.required]),
       secondName: new FormControl('', [Validators.nullValidator]),
@@ -78,18 +80,17 @@ export class RegisterComponent implements OnInit {
   }
 
   updateCompany(content) {
-    const formData = new FormData();
     console.log('SEND FORM', this.inscriptionForm.getRawValue());
-    for (const i in this.inscriptionForm.value) {
-      formData.append(i, this.inscriptionForm.getRawValue()[i]);
-    }
+
+    this.ngform = this.inscriptionForm.value;
+
     if (!this.inscriptionForm.invalid) {
       this.inscriptionService
       .httpWithOutToken(
         environment.domain + 'body/' + `${this.company.id}`,
         'patch',
         undefined,
-        formData
+        this.ngform
       )
       .subscribe(
         (res) => {

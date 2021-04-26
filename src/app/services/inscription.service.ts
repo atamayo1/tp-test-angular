@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import _ from 'lodash';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class InscriptionService {
     url: string,
     type: 'get' | 'post' | 'patch' | 'delete',
     parameters?: { [x: string]: string },
-    data?: any
+    body?: any
   ): Observable<any> {
     // Initialize Params Object
     let params = new HttpParams();
@@ -34,9 +35,9 @@ export class InscriptionService {
       case 'get':
         return this.http.get(url, { params: params });
       case 'post':
-        return this.http.post(url, data, { params: params });
+        return this.http.post(url, body, { params: params });
       case 'patch':
-        return this.http.patch(url, data, { params: params });
+        return this.http.patch(url, body, { params: params });
       case 'delete':
         return this.http.delete(url, { params: params });
     }
