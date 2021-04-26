@@ -1,7 +1,7 @@
 <div class="container register-company">
   <p class="h3">{{ titleRegister }}</p>
   <div class="alert alert-info" [innerHTML]="descriptionRegister"></div>
-  <div class="alert alert-danger" [innerHTML]="invalidFormMessage"></div>
+  <div class="alert alert-danger" *ngIf="invalidFormMessage" [innerHTML]="invalidFormMessage"></div>
   <form [formGroup]="inscriptionForm" *ngIf="inscriptionForm" (ngSubmit)="updateCompany(mymodal)">
     <div class="form-group">
       <label for="idType">Naturaleza:*</label>
