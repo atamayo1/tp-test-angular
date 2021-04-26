@@ -26,8 +26,8 @@ export class HomeComponent implements OnInit {
   ) {
     this.titleInscription = 'Inscripción al servicio:';
     this.descriptionInscription = `Ingrese el NIT de la persona natural o jurídica para la que realizará el trámite, sin incluir el digito de verificación. Luego seleccione <strong>Continuar</strong> para completar su solicitud. <br> N.I.T.`;
-    this.textBtnNext = 'Continuar >';
-    this.textBtnPrevious = '< Regresar';
+    this.textBtnNext = 'Continuar';
+    this.textBtnPrevious = 'Regresar';
   }
 
   ngOnInit(): void {}
