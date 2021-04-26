@@ -44,13 +44,8 @@ export class HomeComponent implements OnInit {
             console.log('get company', res);
             if (res.length > 0) {
               this.company = res;
-
-              const navigationExtras: NavigationExtras = {
-                queryParams: {
-                  data: this.company,
-                },
-              };
-              this.router.navigate(['register'], navigationExtras);
+              localStorage.setItem('company', JSON.stringify(this.company));
+              this.router.navigate(['register']);
             } else {
               this.activeModal(content);
             }

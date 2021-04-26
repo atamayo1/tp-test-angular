@@ -4,12 +4,12 @@
     {
       "idType": "natural",
       "id": 811033098,
-      "companyName": "AnthonyTamayoOrtega",
+      "companyName": "AnthonyTamayo",
       "firstName": "Anthony",
       "secondName": "",
       "firstLastName": "Tamayo",
-      "secondLastName": "Ortega",
-      "email": "anthonytamayoortega@yopmail.com",
+      "secondLastName": "",
+      "email": "anthonytamayo@yopmail.com",
       "address": "Cra 92 #48 - 163",
       "municipalityOfTheAddress": "Cali",
       "cellPhone": "+573216376699",
@@ -22,12 +22,14 @@
       "companyName": "AnthonyJobs",
       "firstName": "Anthony",
       "secondName": "",
-      "firstLastName": "Tamayo",
-      "secondLastName": "Ortega",
+      "firstLastName": "Jobs",
+      "secondLastName": "",
       "email": "anthonyjobs@yopmail.com",
       "address": "Cra 92 #48 - 163",
       "municipalityOfTheAddress": "Cali",
-      "cellPhone": "+573216376699"
+      "cellPhone": "+573216376699",
+      "municipality": "Cali",
+      "phone": "+573216376699"
     }
   ]
 }
