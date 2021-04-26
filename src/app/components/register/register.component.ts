@@ -6,7 +6,7 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Inscription } from 'src/app/interfaces/inscription.interface';
 import { InscriptionService } from 'src/app/services/inscription.service';
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       'Datos de la persona natural o jurídica que solicita el servicio de trámites virtuales:';
     this.descriptionRegister =
       'La empresa se encuentra registrada en la Camara de Comercio de Medellín para Antioquia. Para acceder al servicio de Trámites Virtuales se utilizarán los datos reportados en el registro. <br> Los campos marcados con asterisco (*) son obligatorios.';
-    this.company = this.router.getCurrentNavigation().extras.queryParams.data[0];
+    this.company = JSON.parse(localStorage.getItem('company'))[0];
     console.log('receive params', this.company);
     this.validForm();
   }
@@ -43,7 +43,9 @@ export class RegisterComponent implements OnInit {
   validForm() {
     this.inscriptionForm = new FormGroup({
       idType: new FormControl(null, [Validators.required]),
-      id: new FormControl({value: null, disabled: true}, [Validators.required]),
+      id: new FormControl({ value: null, disabled: true }, [
+        Validators.required,
+      ]),
       companyName: new FormControl('', [Validators.required]),
       firstName: new FormControl('', [Validators.required]),
       secondName: new FormControl('', [Validators.nullValidator]),
@@ -81,8 +83,8 @@ export class RegisterComponent implements OnInit {
   }
 
   updateCompany(content) {
-    if(this.inscriptionForm.invalid) {
-      this.invalidFormMessage = "El formulario no es valido";
+    if (this.inscriptionForm.invalid) {
+      this.invalidFormMessage = 'El formulario no es valido';
     }
 
     console.log('SEND FORM', this.inscriptionForm.getRawValue());
@@ -91,34 +93,34 @@ export class RegisterComponent implements OnInit {
 
     if (!this.inscriptionForm.invalid) {
       this.inscriptionService
-      .httpWithOutToken(
-        environment.domain + 'body/' + `${this.company.id}`,
-        'patch',
-        undefined,
-        this.ngform
-      )
-      .subscribe(
-        (res) => {
-          if (!environment.production) console.log('SUCCESS_UPDATE', res);
-          this.activeModal(content);
-        },
-        (err) => {
-          if (!environment.production) console.log('FAILED_UPDATE', err);
-        }
-      );
+        .httpWithOutToken(
+          environment.domain + 'body/' + `${this.company.id}`,
+          'patch',
+          undefined,
+          this.ngform
+        )
+        .subscribe(
+          (res) => {
+            if (!environment.production) console.log('SUCCESS_UPDATE', res);
+            this.router.navigate(['']);
+            this.activeModal(content);
+          },
+          (err) => {
+            if (!environment.production) console.log('FAILED_UPDATE', err);
+          }
+        );
     }
   }
 
   goBack() {
     this.router.navigate(['']);
   }
-  activeModal(content) {
+  activeModal(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
           this.closeResult = `Closed with: ${result}`;
-          this.router.navigate(['']);
         },
         (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
