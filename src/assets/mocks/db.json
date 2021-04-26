@@ -1,32 +1,31 @@
 {
-    "errors": [],
-    "body": 
-        [
-            {
-                "idType": "natural",
-                "id": "811033098",
-                "companyName": "Anthony Tamayo Ortega",
-                "firstName": "Anthony",
-                "secondName": "",
-                "firstLastName": "Tamayo",
-                "secondLastName": "Ortega",
-                "email": "anthonytamayoortega@gmail.com",
-                "address": "Cra 92 #48 - 163",
-                "municipalityOfTheAddress": "Cali",
-                "cellPhone": "+573216376699"
-            },
-            {
-                "idType": "juridica",
-                "id": "900674336",
-                "companyName": "AnthonyJobs",
-                "firstName": "Anthony",
-                "secondName": "",
-                "firstLastName": "Tamayo",
-                "secondLastName": "Ortega",
-                "email": "anthonyjobs@yopmail.com",
-                "address": "Cra 92 #48 - 163",
-                "municipalityOfTheAddress": "Cali",
-                "cellPhone": "+573216376699"
-            }
-        ]
-  }
+  "errors": [],
+  "body": [
+    {
+      "idType": "natural",
+      "id": "811033098",
+      "companyName": "Anthony Tamayo Ortega",
+      "firstName": "Anthony",
+      "secondName": "",
+      "firstLastName": "Tamayo",
+      "secondLastName": "Ortega",
+      "email": "anthonytamayoortega@gmail.com",
+      "address": "Cra 92 #48 - 163",
+      "municipalityOfTheAddress": "Cali",
+      "cellPhone": "+573216376699"
+    },
+    {
+      "idType": "juridica",
+      "id": "900674336",
+      "companyName": "AnthonyJobs",
+      "firstName": "Anthony",
+      "secondName": "",
+      "firstLastName": "Tamayo",
+      "secondLastName": "Ortega",
+      "email": "anthonyjobs@yopmail.com",
+      "address": "Cra 92 #48 - 163",
+      "municipalityOfTheAddress": "Cali",
+      "cellPhone": "+573216376699"
+    }
+  ]
+}

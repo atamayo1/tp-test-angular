@@ -1,66 +1,207 @@
 <div class="container register-company">
-    <p class="h3">{{titleRegister}}</p>
-    <div class="alert alert-info" [innerHTML]="descriptionRegister"></div>
-    <form action="" method="post">
-        <p>
-            <label for="idtype">Naturaleza:*</label>
-            <select name="idtype" class="form-select form-select-lg form-control">
-                <option selected value="0">Persona jurídica</option>
-                <option value="1">Persona natural</option>
-            </select>
-        </p>
-        <p>
-            <label for="company-name">Nombre/Razón social:*</label>
-            <input type="text" name="company-name" class="form-control" placeholder="CONSULTORES WEB S.A.S" />
-        </p>
-        <div class="row mb-4">
-            <div class="col-12 col-md-4">
-                <label for="via">Via</label>
-                <select name="via" class="form-select form-select-lg form-control">
-                    <option selected value="0">Carrera</option>
-                    <option value="1">Calle</option>
-                </select>
-            </div>
-            <div class="col-3 col-md-1">
-                <label for="number-one">Nro*</label>
-                <input type="number" name="number-one" class="form-control" placeholder="43" />
-            </div>
-            <div class="col-3 col-md-1">
-                <label for="letter-one">Letra</label>
-                <input type="text" name="letter-one" class="form-control" placeholder="A" />
-            </div>
-            <div class="col-3 col-md-1">
-                <label for="number-two">Nro*</label>
-                <input type="number" name="number-two" class="form-control" placeholder="1" />
-            </div>
-            <div class="col-3 col-md-1">
-                <label for="letter-two">Letra</label>
-                <input type="text" name="letter-two" class="form-control" />
-            </div>
-            <div class="col-12 col-md-4">
-                <label for="complement-number">Nro y complementos*</label>
-                <input type="number" name="complement-number" class="form-control" placeholder="85 INT. 613" />
-            </div>
-        </div>
-        <p>
-            <label for="address">Dirección:*</label>
-            <input type="text" name="address" class="form-control" placeholder="CARRERA 43 A 1 85 INT. 613" /> 
-        </p>
-        <p>
-            <label for="municipality-of-the-address">Municipio:*</label>
-            <input type="text" name="municipality-of-the-address" class="form-control" placeholder="COLOMBIA - ANTIOQUÍA - MEDELLÍN" /> 
-        </p>
-        <p>
-            <label for="phone">Teléfono 1:*</label>
-            <input type="text" name="phone" class="form-control" /> 
-        </p>
-        <div class="row mb-4">
-            <div class="col-6">
-                <input type="button" [value]="textBtnNext" class="btn btn-danger w-100" (click)="updateCompany()" />
-            </div>
-            <div class="col-6">
-                <input type="button" [value]="textBtnPrevious" class="btn btn-dark w-100" (click)="goBack()" />
-            </div>
-        </div>
-    </form>
+  <p class="h3">{{ titleRegister }}</p>
+  <div class="alert alert-info" [innerHTML]="descriptionRegister"></div>
+  <form [formGroup]="inscriptionForm" *ngIf="inscriptionForm" (ngSubmit)="updateCompany(mymodal)">
+    <div class="form-group">
+      <label for="idType">Naturaleza:*</label>
+      <select name="idType" class="form-select form-select-lg form-control" formControlName="idType">
+        <option selected value="juridica">Persona jurídica</option>
+        <option value="natural">Persona natural</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="id">Cédula:*</label>
+      <input
+        type="number"
+        name="id"
+        id="id"
+        formControlName="id"
+        class="form-control"
+        placeholder=""
+        maxlength="10"
+      />
+    </div>
+    <div class="form-group">
+      <label for="company-name">Nombre/Razón social:*</label>
+      <input
+        type="text"
+        formControlName="companyName"
+        name="company-name"
+        class="form-control"
+        placeholder=""
+      />
+    </div>
+    <div class="form-group">
+      <label for="first-name">Primer nombre:*</label>
+      <input
+        type="text"
+        formControlName="firstName"
+        name="first-name"
+        class="form-control"
+        placeholder=""
+      />
+    </div>
+    <div class="form-group">
+      <label for="second-name">Segundo nombre:</label>
+      <input
+        type="text"
+        formControlName="secondName"
+        name="second-name"
+        class="form-control"
+        placeholder=""
+      />
+    </div>
+    <div class="form-group">
+      <label for="first-lastname">Primer apellido:*</label>
+      <input
+        type="text"
+        formControlName="firstLastName"
+        name="first-lastname"
+        class="form-control"
+        placeholder=""
+      />
+    </div>
+    <div class="form-group">
+      <label for="second-lastname">Segundo apellido:</label>
+      <input
+        type="text"
+        formControlName="secondLastName"
+        name="second-lastname"
+        class="form-control"
+        placeholder=""
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email:*</label>
+      <input
+        type="email"
+        formControlName="email"
+        name="email"
+        class="form-control"
+        placeholder=""
+      />
+    </div>
+    <!--div class="row mb-4">
+      <div class="col-12 col-md-4">
+        <label for="via">Via</label>
+        <select
+          name="via"
+          class="form-select form-select-lg form-control"
+          formControlName="via"
+        >
+          <option selected value="0">Carrera</option>
+          <option value="1">Calle</option>
+        </select>
+      </div>
+      <div class="col-3 col-md-1">
+        <label for="number-one">Nro*</label>
+        <input
+          type="number"
+          name="number-one"
+          class="form-control"
+          formControlName="numberOne"
+          placeholder="43"
+        />
+      </div>
+      <div class="col-3 col-md-1">
+        <label for="letter-one">Letra</label>
+        <input
+          type="text"
+          name="letter-one"
+          class="form-control"
+          formControlName="letterOne"
+          placeholder="A"
+        />
+      </div>
+      <div class="col-3 col-md-1">
+        <label for="number-two">Nro*</label>
+        <input
+          type="number"
+          name="number-two"
+          class="form-control"
+          formControlName="numberTwo"
+          placeholder="1"
+        />
+      </div>
+      <div class="col-3 col-md-1">
+        <label for="letter-two">Letra</label>
+        <input
+          type="text"
+          name="letter-two"
+          formControlName="letterTwo"
+          class="form-control"
+        />
+      </div>
+      <div class="col-12 col-md-4">
+        <label for="complement-number">Nro y complementos*</label>
+        <input
+          type="number"
+          name="complement-number"
+          class="form-control"
+          formControlName="complementNumber"
+          placeholder="85 INT. 613"
+        />
+      </div>
+    </div-->
+    <div class="form-group">
+      <label for="address">Dirección:*</label>
+      <input
+        type="text"
+        name="address"
+        class="form-control"
+        formControlName="address"
+        placeholder=""
+      />
+    </div>
+    <div class="form-group">
+      <label for="municipality-of-the-address">Municipio:*</label>
+      <input
+        type="text"
+        name="municipality-of-the-address"
+        class="form-control"
+        formControlName="municipality"
+        placeholder=""
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone">Teléfono 1:*</label>
+      <input
+        type="tel"
+        name="phone"
+        class="form-control"
+        formControlName="phone"
+        placeholder=""
+      />
+    </div>
+    <div class="row mb-4">
+      <div class="col-6">
+        <button
+          type="submit"
+          class="btn btn-danger w-100"
+        >Continuar</button>
+      </div>
+      <div class="col-6">
+        <button
+          type="button"
+          class="btn btn-dark w-100"
+          (click)="goBack()"
+        >Regresar</button>
+      </div>
+    </div>
+  </form>
 </div>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Información</h4>
+      <button
+        type="button"
+        class="btn btn-dark"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">Cerrar</span>
+      </button>
+    </div>
+    <div class="modal-body">La empresa con el NIT {{company.id}} quedó actualizada</div>
+  </ng-template>
