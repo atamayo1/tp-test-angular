@@ -9,6 +9,20 @@
         <option value="natural">Persona natural</option>
       </select>
     </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('idType').errors">
+      <span
+        *ngIf="inscriptionForm.get('idType').hasError('required')"
+        class="alert alert-warning"
+      >
+        El tipo de identificación es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('idType').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        El tipo de identificación no es v&aacute;lido.
+      </span>
+    </div>
     <div class="form-group">
       <label for="id">Cédula:*</label>
       <input
@@ -19,6 +33,7 @@
         class="form-control"
         placeholder=""
         maxlength="10"
+        disabled="true"
       />
     </div>
     <div class="form-group">
@@ -31,6 +46,20 @@
         placeholder=""
       />
     </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('companyName').errors">
+      <span
+        *ngIf="inscriptionForm.get('companyName').hasError('required')"
+        class="alert alert-warning"
+      >
+        El nombre/razón social es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('companyName').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        El nombre/razón social no es v&aacute;lido.
+      </span>
+    </div>
     <div class="form-group">
       <label for="first-name">Primer nombre:*</label>
       <input
@@ -40,6 +69,20 @@
         class="form-control"
         placeholder=""
       />
+    </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('firstName').errors">
+      <span
+        *ngIf="inscriptionForm.get('firstName').hasError('required')"
+        class="alert alert-warning"
+      >
+        El primer nombre es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('firstName').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        El primer nombre no es v&aacute;lido.
+      </span>
     </div>
     <div class="form-group">
       <label for="second-name">Segundo nombre:</label>
@@ -61,6 +104,20 @@
         placeholder=""
       />
     </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('firstLastName').errors">
+      <span
+        *ngIf="inscriptionForm.get('firstLastName').hasError('required')"
+        class="alert alert-warning"
+      >
+        El primer apellido es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('firstLastName').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        El primer apellido no es v&aacute;lido.
+      </span>
+    </div>
     <div class="form-group">
       <label for="second-lastname">Segundo apellido:</label>
       <input
@@ -80,6 +137,20 @@
         class="form-control"
         placeholder=""
       />
+    </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('email').errors">
+      <span
+        *ngIf="inscriptionForm.get('email').hasError('required')"
+        class="alert alert-warning"
+      >
+        El correo es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('email').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        El correo no es v&aacute;lido.
+      </span>
     </div>
     <!--div class="row mb-4">
       <div class="col-12 col-md-4">
@@ -153,6 +224,20 @@
         placeholder=""
       />
     </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('address').errors">
+      <span
+        *ngIf="inscriptionForm.get('address').hasError('required')"
+        class="alert alert-warning"
+      >
+        La dirección es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('address').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        La dirección no es v&aacute;lido.
+      </span>
+    </div>
     <div class="form-group">
       <label for="municipality-of-the-address">Municipio:*</label>
       <input
@@ -163,6 +248,20 @@
         placeholder=""
       />
     </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('municipality').errors">
+      <span
+        *ngIf="inscriptionForm.get('municipality').hasError('required')"
+        class="alert alert-warning"
+      >
+        El municipio es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('municipality').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        El municipio no es v&aacute;lido.
+      </span>
+    </div>
     <div class="form-group">
       <label for="phone">Teléfono 1:*</label>
       <input
@@ -172,6 +271,20 @@
         formControlName="phone"
         placeholder=""
       />
+    </div>
+    <div class="form-group" *ngIf="inscriptionForm.get('phone').errors">
+      <span
+        *ngIf="inscriptionForm.get('phone').hasError('required')"
+        class="alert alert-warning"
+      >
+        El celular es requerido.
+      </span>
+      <span
+        *ngIf="inscriptionForm.get('phone').hasError('validDocument')"
+        class="alert alert-warning"
+      >
+        El celular no es v&aacute;lido.
+      </span>
     </div>
     <div class="row mb-4">
       <div class="col-6">
