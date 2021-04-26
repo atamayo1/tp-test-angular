@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   public inscriptionForm: FormGroup;
   public closeResult: string;
   private ngform: NgForm;
+  public invalidFormMessage: string;
 
   constructor(
     private router: Router,
@@ -80,6 +81,10 @@ export class RegisterComponent implements OnInit {
   }
 
   updateCompany(content) {
+    if(this.inscriptionForm.invalid) {
+      this.invalidFormMessage = "El formulario no es valido";
+    }
+
     console.log('SEND FORM', this.inscriptionForm.getRawValue());
 
     this.ngform = this.inscriptionForm.value;
@@ -120,6 +125,7 @@ export class RegisterComponent implements OnInit {
         }
       );
   }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

@@ -1,6 +1,7 @@
 <div class="container register-company">
   <p class="h3">{{ titleRegister }}</p>
   <div class="alert alert-info" [innerHTML]="descriptionRegister"></div>
+  <div class="alert alert-danger" [innerHTML]="invalidFormMessage"></div>
   <form [formGroup]="inscriptionForm" *ngIf="inscriptionForm" (ngSubmit)="updateCompany(mymodal)">
     <div class="form-group">
       <label for="idType">Naturaleza:*</label>
@@ -304,16 +305,16 @@
 </div>
 
 <ng-template #mymodal let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Información</h4>
-      <button
-        type="button"
-        class="btn btn-dark"
-        aria-label="Close"
-        (click)="modal.dismiss('Cross click')"
-      >
-        <span aria-hidden="true">Cerrar</span>
-      </button>
-    </div>
-    <div class="modal-body">La empresa con el NIT {{company.id}} quedó actualizado</div>
-  </ng-template>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Información</h4>
+    <button
+      type="button"
+      class="btn btn-dark"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">Cerrar</span>
+    </button>
+  </div>
+  <div class="modal-body">La empresa con el NIT {{company.id}} quedó actualizado</div>
+</ng-template>
